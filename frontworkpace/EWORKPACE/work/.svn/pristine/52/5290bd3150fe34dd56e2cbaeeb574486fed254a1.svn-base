@@ -1,0 +1,47 @@
+package test1;
+
+public class HuaWei {
+	 public static boolean BetweenIP(String start, String end, String current)
+     {
+         boolean result = false;
+
+         if (current == "::1") current = "127.0.0.1";
+         if (current == start) result = true;//如果指定的IP范围就是一个IP，那么直接匹配看是否相等
+         else//如果指定IP范围 是一个起始IP范围区间
+         {
+             byte[] start_ip_array = Get4Byte(start);//将点分十进制 转换成 4个元素的字节数组
+             byte[] end_ip_array = Get4Byte(end);
+             byte[] ip_array = Get4Byte(current);
+
+             boolean tmpRes = true;
+             for (int i = 0; i < 4; i++)
+             {
+                 //从左到右 依次比较 对应位置的 值的大小  ，一旦检测到不在对应的范围 那么说明IP不在指定的范围内 并将终止循环
+                 if (ip_array[i] > end_ip_array[i] || ip_array[i] < start_ip_array[i])
+                 {
+                     tmpRes = false; break;
+                 }
+             }
+             result = tmpRes;
+         }
+         return result;
+     }
+
+     /// <summary>
+     /// 将IP四组值 转换成byte型
+     /// </summary>
+     /// <param name="ip"></param>
+     /// <returns></returns>
+     static byte[] Get4Byte(String ip)
+     {
+         String[] _i = ip.Split('.');
+
+         List<byte> res = new List<byte>();
+         foreach (var item in _i)
+         {
+             res.Add(Convert.ToByte(item));
+         }
+
+         return res.ToArray();
+     }
+}

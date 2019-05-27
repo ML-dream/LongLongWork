@@ -1,0 +1,48 @@
+package job;
+import java.util.List;
+import java.util.regex.Pattern;
+
+
+public class Main {
+
+	public static void main(String[] args){
+		String s="172.12.254";
+		
+		if(isIPv4(s)){
+			System.out.println("输出：IPv4");
+		}else if(isIPv6(s)){
+			System.out.println("输出：IPv6");
+		}else{
+			System.out.println("Neither");
+		}
+	}
+
+public static boolean isIPv4(String str){
+if(!Pattern.matches("[1-9][0-9]*[.][1-9][0-9]*[.][1-9][0-9]*[.][1-9][0-9]*", str))
+return false;
+else {
+String[] arrays = str.split("\\.");
+
+if(Integer.parseInt(arrays[0]) < 256 && arrays[0].length() <= 3
+&&Integer.parseInt(arrays[1]) < 256 && arrays[0].length() <= 3
+&&Integer.parseInt(arrays[2]) < 256 && arrays[0].length() <= 3
+&&Integer.parseInt(arrays[3]) < 256 && arrays[0].length() <= 3)
+
+return true;
+
+else return false;
+}
+
+}
+
+public static boolean isIPv6(String str){
+if(!Pattern.matches("[0-9a-fA-F]*[:][0-9a-fA-F]*[:][0-9a-fA-F]*[:][0-9a-fA-F]*[:][0-9a-fA-F]*[:][0-9a-fA-F]*[:][0-9a-fA-F]*[:][0-9a-fA-F]*", str))
+
+	return false;
+
+else return true;
+
+
+}
+
+}

@@ -1,0 +1,46 @@
+package test1;
+
+import java.util.Scanner;
+
+public class HaiKang2 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+// 小A在某公司上班，公司包含的部门比较多，请根据已知的数据对应关系把他们的公司部门关系列出来。
+//		举例说明：
+//		比如公司部门的数据对应关系如下，已按照部门层级排序：
+//		ID        名称          上级部门ID  
+//		1         公司A          0            
+//		2         人力资源部      1            
+//		3         薪酬福利管理部  2            
+//		4         招聘部          2            
+//		列出部门的关系如下：
+//		公司A---人力资源部---薪酬福利管理部；公司A---人力资源部---招聘部
+		
+		/*
+		 * 一行字符串:1,A,0;2,B,1;3,C,2;4,D,2
+1,A,0,1分别表示部门ID、部门名称、上级部门ID；第一层级部门ID固定为1，上级部门ID为0，且只有1个根部门；部门数据之间使用逗号分隔；部门ID和上级部门ID关联正确
+要求至少输入三个部门。
+如输入条件不满足，则输出“incorrect data”
+		 */
+		
+		/*
+		 * 有一环形公交站，包含N(N>=3)个站点【站点序号：1…N】，每个站点停留5分钟，相邻两个站点之间行驶时间都是10分钟，循环行驶，已知第一圈第一个站点的进入时间为X，现在公交行驶时间为Y，请计算当前公交行驶的圈数，以及处在哪个站点之间M-N【如果是停在某个站点Z,则输出Z-Z】.
+		 */
+		Scanner sc=new Scanner(System.in);
+		String s = sc.nextLine();
+	}
+	
+	public static void dept(String s){
+		String [] strs = s.split(";");
+		String errorput = "incorrect data";
+		if(strs.length != 3){
+			System.out.println(errorput);
+		} 
+		
+	}
+
+}

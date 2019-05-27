@@ -1,0 +1,80 @@
+package test1;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+import com.sun.org.apache.commons.collections.CollectionUtils;
+
+public class Main {
+	    public static void main(String[] args){
+	        Scanner sc=new Scanner(System.in);
+	        while(sc.hasNextLine()){
+	        	String org=sc.nextLine();
+	        	String s=test(org);
+	        	if(!s.isEmpty()){
+	        		System.out.println(s);
+		        	System.out.println(s.length());
+	        	}else{
+	        		System.out.println(s);
+	        	}
+	        	
+	        }
+	     }
+	    
+	    public static String test(String org){
+	    	List<String> listS=new ArrayList<String>();
+	        Map<String,Integer>mapa=new HashMap<String,Integer>();
+	        List<Integer>listL=new ArrayList<Integer>();
+	        String s="";
+	        int index=0;
+	        for(int i=0;i<org.length();i++){
+	        	char c=org.charAt(i);
+        		if(48<=c&&c<=57){
+        			s+=c;
+        			if(i==(org.length()-1)&&!s.isEmpty()){
+        				listS.add(s);
+        				listL.add(s.length());
+        				index++;
+        				mapa.put(s.length()+"_"+index, index);
+//        				mapa.put(s.length()+"", index);
+        				s="";
+        			}
+        		}else{
+        			if(!s.isEmpty()){
+        				listS.add(s);
+        				listL.add(s.length());
+        				index++;
+        				mapa.put(s.length()+"_"+index, index);
+        				s="";
+        			}
+        		}
+	        }
+	        List<String> listI=new ArrayList<String>();
+	        int temp=0;
+	        if(listL.isEmpty()){
+	        	temp=0;
+	        	return "";
+	        	
+	        }else{
+	        	temp=Collections.max(listL);
+	        }
+	        for(int j=0;j<=index;j++){
+	        	Integer strIndex=mapa.get(temp+"_"+j);
+	        	if(strIndex!=null){
+	        		listI.add(listS.get(strIndex-1));
+	        	}
+	        }
+	        return listI.get(listI.size()-1);
+	    }
+	
+}
+/*for(int j=0;j<=intex;j++){
+	        	Integer strIndex=mapa.get(temp+"_"+j);
+	        	if(strIndex!=null){
+	        		listI.add(listS.get(strIndex-1));
+	        	}
+	        }*/

@@ -1,0 +1,32 @@
+package test1;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class SocketTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ServerSocket sc = null;
+		try {
+			sc = new ServerSocket(80);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Socket soc = null;
+		try {
+			soc = sc.accept();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		int port = soc.getPort();
+		System.out.println(port);
+	}
+
+}

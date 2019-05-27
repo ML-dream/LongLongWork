@@ -1,0 +1,60 @@
+package test1;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class MeiDi {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		String org = sc.nextLine();
+		String s = Meidi(org);
+		System.out.println(s);
+	}
+	public static String Meidi(String s){
+		String res = "";
+		Map<Integer,String> mapa = new HashMap<Integer, String>();
+//		从右开始
+		for(int m=0,n=s.length();m<n;m++){
+			int nm=n-m-1;
+			StringBuilder sb = new StringBuilder(s.substring(0,nm));
+			String temp = sb.toString();	//当前字符
+			sb.reverse().toString();
+			if(temp.equals(sb.toString())){
+				try {
+					mapa.put(temp.length(), temp);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				res=temp;
+				break;
+			}
+		}
+//		两边同时
+//		for()
+		return res;
+	}
+	
+	public static void test(String s){
+		char [] chars = s.toCharArray();
+		Integer last = 0;
+		for(int m=0,n=chars.length/2;m<n;m++){
+			char c= chars[m];
+			Integer i = null;
+			try {
+				i=s.indexOf(m,c);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			if(i!=null){
+				last = i;
+			}
+		}
+	}
+
+}

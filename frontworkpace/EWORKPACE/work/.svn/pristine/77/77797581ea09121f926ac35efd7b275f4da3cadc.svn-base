@@ -1,0 +1,25 @@
+package test1;
+
+import java.util.ArrayList;
+
+public class KeDa1 {
+	
+	public void main (String []args){
+		String s = "";
+		min(s);
+	}
+	
+	public static void min(String s){
+		char[] chars = s.toCharArray();
+		String key ="RL";
+//		s.
+		if(s.contains("RL")){
+			int index=s.indexOf(key);
+			chars.clone();
+		}else{
+			System.out.println(s.length());
+			return ;
+		}
+	}
+
+}

@@ -1,0 +1,47 @@
+package test1;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main2 {
+	public static void test(){
+		int a =0;
+		a++;
+		System.out.println(a);
+	}
+	 public static void main(String[] args) {
+		 
+		 	System.out.println("a".toUpperCase().valueOf('b'));
+//		 	List
+	        Scanner in = new Scanner(System.in);
+	        String s = "";
+	        int len = Integer.parseInt(in.nextLine());
+	        String [] strs =new String[len];
+
+	        for(int i =0;i<len;i++){
+	        	strs[i]=in.nextLine();
+	        }
+	        String [] result = new String[len];
+	        result= result(strs);
+	        for(String temp:result){
+	        	System.out.println(temp);
+	        }
+//	        static int a = 1;
+	    }
+	    public static String[] result(String[] org){
+			 String s = "";
+			 
+			 Arrays.sort(org);
+	         return org;
+	    }
+//	    Class classa = 
+//	    ClassLoader
+//	    Number
+//	    Math
+//	    Integer
+//	    String
+//	    StringBuilder
+//	    StringBuffer
+//	    Object
+}

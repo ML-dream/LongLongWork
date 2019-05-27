@@ -1,0 +1,95 @@
+package test1;
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class SF1 {
+
+
+/*请完成下面这个函数，实现题目要求的功能
+当然，你也可以不按照下面这个模板来作答，完全按照自己的想法来 ^-^ 
+******************************开始写代码******************************/
+    static int[] solve(int[] a) {
+    	int n = a.length;
+    	int [] b =new int[n];
+    	b[n-1]=a[n-1];
+    	for(int i=2,l=n;i<=l;i++){
+    		int now = n-i;
+    		int last = now+1;
+//    		b[now] = a[now] -b[last];
+    		b[now]=a[now]+a[last];
+    	}
+    	return b;
+
+    }
+/******************************结束写代码******************************/
+
+
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        int[] res;
+            
+        int _a_size = 0;
+        _a_size = Integer.parseInt(in.nextLine().trim());
+        int[] _a = new int[_a_size];
+        int _a_item;
+        for(int _a_i = 0; _a_i < _a_size; _a_i++) {
+            _a_item = Integer.parseInt(in.nextLine().trim());
+            _a[_a_i] = _a_item;
+        }
+  
+        res = solve(_a);
+        for(int res_i=0; res_i < res.length; res_i++) {
+            System.out.println(String.valueOf(res[res_i]));
+        }
+
+    }
+}
+
+
+
+
+import java.util.Scanner;
+
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Pattern;
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+        String target=sc.nextLine();
+        mySf(target);
+	}
+	
+	public static void mySf (String target){
+		long result = 0;
+		long limit =1000000000+7;
+		long out =0;
+		
+		long ini = Long.parseLong(target);
+		String pattern = "[47]+";
+		String temp ="";
+		
+		for(int i=0;i<=ini;i++){
+			temp = i+"";
+			if(temp.matches(pattern)){
+				result ++;
+			}
+		}
+		
+		if(result<limit){
+			out = result;
+		}else{
+			out = result % limit;
+		}
+		System.out.println(out);
+	}
+
+}
+

@@ -1,0 +1,41 @@
+package test1;
+
+import java.util.Arrays;
+
+public class VerifySquenceOfBST {
+	public boolean Test(int [] sequence) {
+        if(sequence==null||sequence.length<=0){  
+               return false;  
+           }  
+           int len=sequence.length;  
+           int root=sequence[len-1];  
+           int i=0;  
+           for(;i<len-1;i++){  
+               if(root<=sequence[i])  
+                   break;  
+           }  
+           int j=i;  
+           for(;j<len-1;j++){  
+               if(root>sequence[j]){  
+                   return false;  
+               }  
+           }  
+           boolean leftFlag=true;  
+ 
+           if (i>0) {  
+ 
+           leftFlag=Test(Arrays.copyOfRange(sequence,0,i));  
+ 
+           }  
+ 
+           boolean rightFlag=true;  
+ 
+           if (i<len-1) {  
+ 
+           rightFlag=Test(Arrays.copyOfRange(sequence,i,sequence.length-1));  
+ 
+           }  
+ 
+           return leftFlag&&rightFlag;  
+   }
+}

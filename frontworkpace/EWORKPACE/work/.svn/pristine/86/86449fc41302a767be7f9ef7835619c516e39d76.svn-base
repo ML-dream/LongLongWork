@@ -1,0 +1,28 @@
+package test1;
+
+import javax.servlet.jsp.tagext.TryCatchFinally;
+
+class Super{
+	protected float getNum(){
+		return 3.0f;
+	}
+}
+public class HaiNengDa extends Super {
+//	synchronized HaiNengDa(){}
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		int x[] = new int[3]{1,2,3};
+		int x[] = new int[]{1,2,3};
+		
+		int a = 1+'a';
+		double b = 22.0D+'\u0001';
+//		String c = 1+2.1;
+//		String d = new Date()+new Integer(1);
+	}
+	String str1 = "hello";
+	String str2 = new String ("hello");
+	System.out.println(str1.equals(str2));
+}

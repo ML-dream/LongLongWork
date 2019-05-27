@@ -1,0 +1,67 @@
+package test1;
+
+import java.util.Scanner;
+
+public class Huaweix {
+	private static boolean bigger(int num1,int num2) {
+        String s = num1 + "";
+        int length = s.length();
+//      如果数的长度大于3，截取最后三位
+        if (length > 3)
+            num1 = Integer.parseInt(s.substring(length - 3, length));
+         s = num2 + "";
+         length = s.length();
+        if (length > 3)
+            num2 = Integer.parseInt(s.substring(length - 3, length));
+        if(num1>num2)
+            return true;
+        else
+            return false;
+
+    }
+	 private static int [] bubbleSort(int a[]){
+	        int length=a.length;
+	        for(int i=0;i<length;i++)
+	            for(int j=1;j<length-i;j++){
+//	              利用自定义的比较大小函数，如果前一个数比后一个数大，则两数交换，相等不交换，保证其稳定性
+	                if(bigger(a[j-1], a[j]))
+	                {
+	                    int tmp=a[j];
+	                    a[j]=a[j-1];
+	                    a[j-1]=tmp;
+	                }
+
+	            }
+
+	        return a;
+	    }
+	 public static void main(String[] args) {
+//	      接受输入
+	        Scanner in = new Scanner(System.in);
+	        String s = in.nextLine();
+	        int n=in.nextInt();
+//	      根据“ ”进行分割
+	        String s1[] = s.split(" ");
+	        int length = s1.length;
+	        int num[] = new int[length];
+//	      得到整数数组
+	        for (int i = 0; i < length; i++) {
+	            num[i] = Integer.parseInt(s1[i]);
+	        }
+//	      调用函数经行排序
+	        num = bubbleSort(num);
+	        for (int i = 0; i < length; i++) {
+//	        	if(!(i==length-1)){
+//	        		System.out.print(num[i]+" ");
+//	        	}else {
+//	        		System.out.print(num[i]);
+//	        	}
+//	            
+	        	if(i==(n-1)){
+	        		System.out.print(num[i]);
+	        		break;
+	        	}
+	        }
+
+	    }
+}

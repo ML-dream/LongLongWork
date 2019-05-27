@@ -1,0 +1,97 @@
+package test1;
+
+/*3、 有一个数组a[N]顺序存放0~N-1，要求每隔两个数删掉一个数，到末尾时循环至开头继续进行，求最后一个被删掉的数的原始下标位置。以8个数(N=7)为例:｛0，1，2，3，4，5，6，7｝，
+0->1->2(删除)->3->4->5(删除)->6->7->0(删除),如此循环直到最后一个数被删除。
+方法1：*/
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Arrays;
+public class qusan{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int M=3;
+        while(sc.hasNextInt()){
+            int total=sc.nextInt();
+            queue(total,M);
+        }
+    }
+    /**
+     * 最后出队的人
+     * @param total  总的人数
+     * @param num    第几号出队
+     */
+    public static void queue(int total, int M){
+        //定义一个数组，true表示没有出队列的，false表示已经出队列的
+        boolean []arr = new boolean[total];
+        Arrays.fill(arr, true);
+        //移动变量，如：1  2  3  1  2  3  1  2
+        int next = 1;
+        //数组下标
+        int index = 0;
+        //剩下的人数
+        int count = total;
+        //如果剩下的人数为1人时，停止报数
+        while(count>M){
+            if(arr[index] == true){
+                if(next == 3){
+                    arr[index] = false;
+                    //剩下的人数减1
+                    --count;
+                    //移动变量复位，从1开始报数
+                    next = 1;
+                   // System.out.println("依次出列的人为："+(index+1));
+                }else{
+                    ++next;
+                }
+            }
+            ++index;
+            if(index == total){
+                //数组下标复位，从0开始新重遍历
+                index = 0;
+            }
+        }        
+        for(int i=0; i<total; i++){
+            if(arr[i] == true){
+                System.out.println(i);
+            }
+        }
+    }
+}
+
+
+/*方法二：
+public static void queue(int total){
+         int num =2;
+    List<Integer> lista = new ArrayList<Integer>();
+    List<Integer> listb = new ArrayList<Integer>();
+   
+    for(int i=0;i<total;i++){
+         lista.add(i);    //原始人群
+    }
+    for(int s=0;s<total;s++){
+         int temp =0;  //用来保存当前listb的指针
+         
+         if(lista.size()<=num){
+             for(int i=0,j=lista.size();i<j;i++){
+//                   System.out.println(lista.get(i));
+                 lista.add(lista.get(i));
+             }
+//               return;
+         }else{
+//               System.out.println(lista.get(num));    //始终打印a的第num个
+         }
+         
+         listb=new ArrayList<Integer>();
+         
+         for(int i=num+1;i<lista.size();i++,temp++){
+             listb.add(lista.get(i));
+         }
+         
+         for(int i=0;i<num;i++){
+             listb.add(lista.get(i));
+         }
+         lista =listb;
+    }
+    System.out.println(lista.get(0));
+    }*/

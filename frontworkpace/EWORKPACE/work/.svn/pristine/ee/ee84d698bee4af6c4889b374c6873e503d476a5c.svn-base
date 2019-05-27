@@ -1,0 +1,74 @@
+package test1;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class KeDa3 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String[] chars=null;
+		List<Integer> fList = new ArrayList<Integer>();
+		List<String> sList = new ArrayList<String>();
+		Scanner sc=new Scanner(System.in);
+		int num =Integer.parseInt(sc.nextLine());
+		if(num!=0){
+			for(int i=0;i<num;i++){
+//				if(sc.hasNext()){
+					String org=sc.nextLine();
+		        	chars = org.split(" ");
+		        	if(chars.length!=0){
+		        		fList.add(Integer.parseInt(chars[0]));
+			        	sList.add(chars[1]);
+		        	}
+//				}
+			}
+//			System.out.println("test");
+			conflict(fList,sList);
+		}
+	}
+	
+
+	public static void conflict(List<Integer> fList,List<String> sList){
+		int temp = 0;
+		List<String> result = new ArrayList<String>();
+		List<Integer> al = new ArrayList<Integer>();
+		for(int m=0,n=fList.size();m<n;m++){
+			int con = fList.get(m);
+			if(al.contains(con)){
+				continue;
+			}
+			String cons = con+"";
+			if(con ==1){
+				cons ="01";
+			}
+			String conf = ""+cons+" "+sList.get(m);
+			
+			for (int i =m+1,l=fList.size();i<l;i++){
+				temp = fList.get(i);
+				if(con !=temp){
+					continue;
+				}else{
+					conf = conf+" "+ sList.get(i); 
+					result.add(conf);
+				}
+			}
+			
+			al.add(temp);
+		}
+		
+		if(result.isEmpty()){
+			System.out.println("YES");
+		}else{
+			for(String str:result){
+				System.out.println(str);
+			}
+		}
+	}
+
+}

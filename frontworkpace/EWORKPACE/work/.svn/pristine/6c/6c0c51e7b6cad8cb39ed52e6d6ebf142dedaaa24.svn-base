@@ -1,0 +1,77 @@
+package test1;
+
+import java.util.Scanner;
+
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Pattern;
+
+public class SF2 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+        String target=sc.nextLine();
+        mySf(target);
+	}
+	
+	public static void mySf (String target){
+		long result = 0;
+		long limit =1000000000+7;
+		long out =0;
+		
+		long ini = Long.parseLong(target);
+		String pattern = "[47]+";
+		String temp ="";
+		
+		String org = target +""; 	
+		String end =org;			//当前  
+		if(org.length()>4){
+			for(int m=0,n=org.length();m<n;m++){
+				
+				char f = end.charAt(0);  //第一位数
+				
+				if(f<52){		
+					end = org.substring(1);
+					ini = Long.parseLong(end);
+					if(ini ==0){
+						String s0= 8 + end.substring(1);
+						for(int i=0;i<=Long.parseLong(s0);i++){
+							temp = i+"";
+							if(temp.matches(pattern)){
+								result ++;
+							}
+						}
+					}else{
+						for(int i=0;i<=ini;i++){
+							temp = i+"";
+							if(temp.matches(pattern)){
+								result ++;
+							}
+						}
+					}
+					
+				}
+			}
+		}else{
+			for(int i=0;i<=ini;i++){
+				temp = i+"";
+				if(temp.matches(pattern)){
+					result ++;
+				}
+			}
+		}
+		
+		
+		
+		
+		if(result<limit){
+			out = result;
+		}else{
+			out = result % limit;
+		}
+		System.out.println(out);
+	}
+
+}
